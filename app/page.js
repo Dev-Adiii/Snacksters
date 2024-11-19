@@ -78,6 +78,7 @@ export default function Home() {
             <div>
               <h3 className="text-yellow-400 text-3xl font-bold mb-4">Snacksters</h3>
               <p>Delivering happiness to your doorstep</p>
+              <p>Delivery Timings : 10:00 AM - 5:00 PM</p>
             </div>
             <div>
               <h3 className="text-yellow-400 text-xl font-bold mb-4">Quick Links</h3>
@@ -91,6 +92,7 @@ export default function Home() {
               <h3 className="text-yellow-400 text-xl font-bold mb-4">Contact Us</h3>
               <p>Email: snacksters@gmail.com</p>
               <p>Phone: +91 7379215521</p>
+              <p>Contact Developer : adityamishr957@gmail.com</p>
             </div>
           </div>
           <div className="text-center mt-8 pt-8 border-t border-white/20">
