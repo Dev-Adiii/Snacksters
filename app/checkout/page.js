@@ -1,10 +1,12 @@
 'use client'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import emailjs from '@emailjs/browser'
+import Image from 'next/image'
 
-const CheckoutPage = () => {
+// Create a separate component for the checkout content
+const CheckoutContent = () => {
   const searchParams = useSearchParams()
   const router = useRouter()
   const items = JSON.parse(decodeURIComponent(searchParams.get('items') || '[]'))
@@ -268,10 +270,12 @@ const CheckoutPage = () => {
                 {paymentMethod === 'upi' && (
                   <div className="mt-4 transition-all duration-300 ease-in-out">
                     <div className="upi-qr-container">
-                      <img
-                        src="/scan.png" 
+                      <Image
+                        src="/scan.png"
                         alt="UPI QR Code"
-                        className="w-48 h-48 mx-auto"
+                        width={192}
+                        height={192}
+                        className="mx-auto"
                       />
                       <p className="text-center text-sm text-neutral-600 mt-2">
                         Scan QR code to pay via UPI
@@ -322,6 +326,19 @@ const CheckoutPage = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+// Main checkout page component
+const CheckoutPage = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    }>
+      <CheckoutContent />
+    </Suspense>
   )
 }
 
